@@ -1,100 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>疯狂哈基米城</title>
     <style>
-        body {
-            background-color: #d65ed0cc;
+        * {
+            padding: 0;
             margin: 0;
-            padding: 15px;
-            font-family: Arial, sans-serif;
+            box-sizing: border-box;
         }
 
-        .container {
-            display: flex;
-            justify-content: center;
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(243, 230, 241);
+            padding: 20px;
         }
-
-        .masonry {
-            column-count: 6;
-            column-gap: 15px;
+        
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #ff6b9d;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-container {
             width: 100%;
             max-width: 1400px;
+            margin: 0 auto;
         }
-
-        .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 15px;
+        
+        .shell {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding: 20px 0;
+            -webkit-overflow-scrolling: touch;
         }
-
-        .masonry-item img {
+        
+        .shell::-webkit-scrollbar {
+            height: 10px;
+        }
+        
+        .shell::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .shell::-webkit-scrollbar-thumb {
+            background: #ff6b9d;
+            border-radius: 10px;
+        }
+        
+        .box {
+            flex: 0 0 300px;
+            height: 400px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border: 8px solid #fff;
+            background-color: #fff;
+            scroll-snap-align: start;
+            position: relative;
+        }
+        
+        .box img {
             width: 100%;
-            height: auto;
-            border-radius: 8px;
-            display: block;
+            height: 85%;
+            object-fit: cover;
             transition: transform 0.3s ease;
         }
-
-        .masonry-item img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        
+        .box span {
+            font: 200 20px '优设标题黑';
+            text-align: center;
+            height: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ff6b9d;
         }
-
-        @media screen and (max-width: 1200px) {
-            .masonry {
-                column-count: 4;
+        
+        .box:hover {
+            transform: scale(1.05);
+            box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .box:hover img {
+            transform: scale(1.1);
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .controls button {
+            padding: 10px 20px;
+            background-color: #ff6b9d;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .controls button:hover {
+            background-color: #ff4785;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .box {
+                flex: 0 0 250px;
+                height: 350px;
             }
-        }
-
-        @media screen and (max-width: 900px) {
-            .masonry {
-                column-count: 3;
-            }
-        }
-
-        @media screen and (max-width: 600px) {
-            .masonry {
-                column-count: 2;
+            
+            h1 {
+                font-size: 2em;
             }
         }
     </style>
 </head>
+
 <body>
-    <div class="shell">
-        <div class="image"><img src="./群友/1.jpg" alt="图片1"></div>
-        <div class="image"><img src="./群友/2.jpg" alt="图片2"></div>
-        <div class="image"><img src="./群友/3.jpg" alt="图片3"></div>
-        <div class="image"><img src="./群友/4.jpg" alt="图片4"></div>
-        <div class="image"><img src="./群友/5.jpg" alt="图片5"></div>
-        <div class="image"><img src="./群友/6.jpg" alt="图片6"></div>
-        <div class="image"><img src="./群友/7.jpg" alt="图片7"></div>
-        <div class="image"><img src="./群友/8.jpg" alt="图片8"></div>
-        <div class="image"><img src="./群友/9.jpg" alt="图片9"></div>
-        <div class="image"><img src="./群友/10.jpg" alt="图片10"></div>
-        <div class="image"><img src="./群友/11.jpg" alt="图片11"></div>
-        <div class="image"><img src="./群友/12.jpg" alt="图片12"></div>
-        <div class="image"><img src="./群友/13.jpg" alt="图片13"></div>
-        <div class="image"><img src="./群友/14.jpg" alt="图片14"></div>
-        <div class="image"><img src="./群友/15.jpg" alt="图片15"></div>
-        <div class="image"><img src="./群友/16.jpg" alt="图片16"></div>
-        <div class="image"><img src="./群友/17.jpg" alt="图片17"></div>
-        <div class="image"><img src="./群友/18.jpg" alt="图片18"></div>
-        <div class="image"><img src="./群友/19.jpg" alt="图片19"></div>
-        <div class="image"><img src="./群友/20.jpg" alt="图片20"></div>
-        <div class="image"><img src="./群友/21.jpg" alt="图片21"></div>
-        <div class="image"><img src="./群友/22.jpg" alt="图片22"></div>
-        <div class="image"><img src="./群友/23.jpg" alt="图片23"></div>
-        <div class="image"><img src="./群友/24.jpg" alt="图片24"></div>
-        <div class="image"><img src="./群友/25.jpg" alt="图片25"></div>
-        <div class="image"><img src="./群友/26.jpg" alt="图片26"></div>
-        <div class="image"><img src="./群友/27.jpg" alt="图片27"></div>
-        <div class="image"><img src="./群友/28.jpg" alt="图片28"></div>
-        <div class="image"><img src="./群友/29.jpg" alt="图片29"></div>
-        <div class="image"><img src="./群友/30.jpg" alt="图片30"></div>
-        <div class="image"><img src="./群友/31.jpg" alt="图片31"></div>
+    <h1>疯狂哈基米城</h1>
+    
+    <div class="gallery-container">
+        <div class="controls">
+            <button id="scrollLeft">←跟着我左手 </button>
+            <button id="scrollRight"> 右手一个慢动作→</button>
+        </div>
+        
+        <div class="shell" id="gallery">
+            <div class="box">
+                <img src="./群友/1.jpg" alt="哈基米 1">
+                <span>哈基米 1</span>
+            </div>
+            <div class="box">
+                <img src="./群友/2.jpg" alt="哈基米 2">
+                <span>哈基米 2</span>
+            </div>
+            <div class="box">
+                <img src="./群友/3.jpg" alt="哈基米 3">
+                <span>哈基米 3</span>
+            </div>
+            <div class="box">
+                <img src="./群友/4.jpg" alt="哈基米 4">
+                <span>哈基米 4</span>
+            </div>
+            <div class="box">
+                <img src="./群友/5.jpg" alt="哈基米 5">
+                <span>哈基米 5</span>
+            </div>
+            <div class="box">
+                <img src="./群友/6.jpg" alt="哈基米 6">
+                <span>哈基米 6</span>
+            </div>
+            <div class="box">
+                <img src="./群友/7.jpg" alt="哈基米 7">
+                <span>哈基米 7</span>
+            </div>
+            <div class="box">
+                <img src="./群友/8.jpg" alt="哈基米 8">
+                <span>哈基米 8</span>
+            </div>
+            <div class="box">
+                <img src="./群友/9.jpg" alt="哈基米 9">
+                <span>哈基米 9</span>
+            </div>
+            <div class="box">
+                <img src="./群友/10.jpg" alt="哈基米 10">
+                <span>哈基米 10</span>
+            </div>
+            <div class="box">
+                <img src="./群友/11.jpg" alt="哈基米 11">
+                <span>哈基米 11</span>
+            </div>
+            <div class="box">
+                <img src="./群友/12.jpg" alt="哈基米 12">
+                <span>哈基米 12</span>
+            </div>
+            <div class="box">
+                <img src="./群友/13.jpg" alt="哈基米 13">
+                <span>哈基米 13</span>
+            </div>
+            <div class="box">
+                <img src="./群友/14.jpg" alt="哈基米 14">
+                <span>哈基米 14</span>
+            </div>
+            <div class="box">
+                <img src="./群友/15.jpg" alt="哈基米 15">
+                <span>哈基米 15</span>
+            </div>
+            <div class="box">
+                <img src="./群友/16.jpg" alt="哈基米 16">
+                <span>哈基米 16</span>
+            </div>
+            <div class="box">
+                <img src="./群友/17.jpg" alt="哈基米 17">
+                <span>哈基米 17</span>
+            </div>
+            <div class="box">
+                <img src="./群友/18.jpg" alt="哈基米 18">
+                <span>哈基米 18</span>
+            </div>
+            <div class="box">
+                <img src="./群友/19.jpg" alt="哈基米 19">
+                <span>哈基米 19</span>
+            </div>
+            <div class="box">
+                <img src="./群友/20.jpg" alt="哈基米 20">
+                <span>哈基米 20</span>
+            </div>
+            <div class="box">
+                <img src="./群友/21.jpg" alt="哈基米 21">
+                <span>哈基米 21</span>
+            </div>
+            <div class="box">
+                <img src="./群友/22.jpg" alt="哈基米 22">
+                <span>哈基米 22</span>
+            </div>
+            <div class="box">
+                <img src="./群友/23.jpg" alt="哈基米 23">
+                <span>哈基米 23</span>
+            </div>
+            <div class="box">
+                <img src="./群友/24.jpg" alt="哈基米 24">
+                <span>哈基米 24</span>
+            </div>
+            <div class="box">
+                <img src="./群友/25.jpg" alt="哈基米 25">
+                <span>哈基米 25</span>
+            </div>
+            <div class="box">
+                <img src="./群友/26.jpg" alt="哈基米 26">
+                <span>哈基米 26</span>
+            </div>
+            <div class="box">
+                <img src="./群友/27.jpg" alt="哈基米 27">
+                <span>哈基米 27</span>
+            </div>
+            <div class="box">
+                <img src="./群友/28.jpg" alt="哈基米 28">
+                <span>哈基米 28</span>
+            </div>
+            <div class="box">
+                <img src="./群友/29.jpg" alt="哈基米 29">
+                <span>哈基米 29</span>
+            </div>
+            <div class="box">
+                <img src="./群友/30.jpg" alt="哈基米 30">
+                <span>哈基米 30</span>
+            </div>
+            <div class="box">
+                <img src="./群友/31.jpg" alt="哈基米 31">
+                <span>哈基米 31</span>
+            </div>
+        </div>
     </div>
+
+    <script>
+        const gallery = document.getElementById('gallery');
+        const scrollLeftBtn = document.getElementById('scrollLeft');
+        const scrollRightBtn = document.getElementById('scrollRight');
+        
+        scrollLeftBtn.addEventListener('click', () => {
+            gallery.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+        
+        scrollRightBtn.addEventListener('click', () => {
+            gallery.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+        
+        // 添加键盘左右箭头控制
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                gallery.scrollBy({ left: -300, behavior: 'smooth' });
+            } else if (e.key === 'ArrowRight') {
+                gallery.scrollBy({ left: 300, behavior: 'smooth' });
+            }
+        });
+        
+        // 添加触摸滑动支持
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        
+        gallery.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - gallery.offsetLeft;
+            scrollLeft = gallery.scrollLeft;
+        });
+        
+        gallery.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+        
+        gallery.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+        
+        gallery.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - gallery.offsetLeft;
+            const walk = (x - startX) * 2;
+            gallery.scrollLeft = scrollLeft - walk;
+        });
+    </script>
 </body>
 
 </html>
