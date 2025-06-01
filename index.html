@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,51 +7,60 @@
     <style>
         body {
             background-color: #d65ed0cc;
-            display: flex;
-            justify-content: center;
             margin: 0;
             padding: 15px;
+            font-family: Arial, sans-serif;
         }
 
-        .shell {
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .masonry {
             column-count: 6;
             column-gap: 15px;
             width: 100%;
             max-width: 1400px;
         }
 
-        .image {
-            margin-bottom: 15px;
+        .masonry-item {
             break-inside: avoid;
+            margin-bottom: 15px;
         }
 
-        .image img {
+        .masonry-item img {
             width: 100%;
             height: auto;
             border-radius: 8px;
             display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .masonry-item img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         @media screen and (max-width: 1200px) {
-            .shell {
+            .masonry {
                 column-count: 4;
             }
         }
 
         @media screen and (max-width: 900px) {
-            .shell {
+            .masonry {
                 column-count: 3;
             }
         }
 
         @media screen and (max-width: 600px) {
-            .shell {
+            .masonry {
                 column-count: 2;
             }
         }
     </style>
 </head>
-
 <body>
     <div class="shell">
         <div class="image"><img src="./群友/1.jpg" alt="图片1"></div>
